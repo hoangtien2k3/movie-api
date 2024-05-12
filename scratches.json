@@ -1,0 +1,72 @@
+[
+  {
+    "movieId": 1,
+    "title": "Avengers: Endgame",
+    "directory": "Joe and Anthony Brothers",
+    "studio": "Marvel Studio",
+    "movieCast": [
+      "RDJ",
+      "Chris Evans",
+      "Scarlett Johansson"
+    ],
+    "releaseYear": 2019,
+    "poster": "default.png",
+    "posterUrl": "url"
+  },
+  {
+    "movieId": 2,
+    "title": "The Dark Knight",
+    "directory": "Christopher Nolan",
+    "studio": "Warner Bros. Pictures",
+    "movieCast": [
+      "Christian Bale",
+      "Heath Ledger",
+      "Aaron Eckhart"
+    ],
+    "releaseYear": 2008,
+    "poster": "default.png",
+    "posterUrl": "url"
+  },
+  {
+    "movieId": 3,
+    "title": "Inception",
+    "directory": "Christopher Nolan",
+    "studio": "Warner Bros. Pictures",
+    "movieCast": [
+      "Leonardo DiCaprio",
+      "Joseph Gordon-Levitt",
+      "Ellen Page"
+    ],
+    "releaseYear": 2010,
+    "poster": "default.png",
+    "posterUrl": "url"
+  },
+  {
+    "movieId": 4,
+    "title": "Interstellar",
+    "directory": "Christopher Nolan",
+    "studio": "Warner Bros. Pictures",
+    "movieCast": [
+      "Matthew McConaughey",
+      "Anne Hathaway",
+      "Jessica Chastain"
+    ],
+    "releaseYear": 2014,
+    "poster": "default.png",
+    "posterUrl": "url"
+  },
+  {
+    "movieId": 5,
+    "title": "Pulp Fiction",
+    "directory": "Quentin Tarantino",
+    "studio": "Miramax Films",
+    "movieCast": [
+      "John Travolta",
+      "Uma Thurman",
+      "Samuel L. Jackson"
+    ],
+    "releaseYear": 1994,
+    "poster": "default.png",
+    "posterUrl": "url"
+  }
+]
