@@ -1,51 +1,65 @@
 package com.hoangtien2k3.movieapi.controller;
 
-import com.hoangtien2k3.movieapi.auth.entities.RefreshToken;
+import com.hoangtien2k3.movieapi.auth.dto.response.UserResponse;
 import com.hoangtien2k3.movieapi.auth.service.AuthService;
 import com.hoangtien2k3.movieapi.auth.service.JwtService;
 import com.hoangtien2k3.movieapi.auth.service.RefreshTokenService;
-import com.hoangtien2k3.movieapi.auth.utils.request.LoginRequest;
-import com.hoangtien2k3.movieapi.auth.utils.request.RefreshTokenRequest;
-import com.hoangtien2k3.movieapi.auth.utils.request.RegisterRequest;
-import com.hoangtien2k3.movieapi.auth.utils.response.AuthResponse;
+import com.hoangtien2k3.movieapi.auth.dto.request.LoginRequest;
+import com.hoangtien2k3.movieapi.auth.dto.request.RefreshTokenRequest;
+import com.hoangtien2k3.movieapi.auth.dto.request.RegisterRequest;
+import com.hoangtien2k3.movieapi.auth.dto.response.AuthResponse;
+import com.hoangtien2k3.movieapi.dto.ApiResponse;
+import com.hoangtien2k3.movieapi.utils.AppMessage;
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/auth")
+@AllArgsConstructor
 public class AuthController {
 
     private final AuthService authService;
     private final RefreshTokenService refreshTokenService;
     private final JwtService jwtService;
 
-    public AuthController(AuthService authService, RefreshTokenService refreshTokenService, JwtService jwtService) {
-        this.authService = authService;
-        this.refreshTokenService = refreshTokenService;
-        this.jwtService = jwtService;
+    @PostMapping({"/register", "/signup"})
+    public ResponseEntity<ApiResponse<UserResponse>> register(@RequestBody @Valid RegisterRequest registerRequest) {
+        int statusCode = HttpStatus.CREATED.value();
+        String message = AppMessage.ACCOUNT_CREATED_SUCCESS.getMessage();
+        return ResponseEntity.status(statusCode)
+                .body(buildApiResponse(authService.register(registerRequest), statusCode, message));
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest registerRequest) {
-        return ResponseEntity.ok(authService.register(registerRequest));
+    @PostMapping({"/login", "/signin"})
+    public ApiResponse<AuthResponse> register(@RequestBody LoginRequest loginRequest) {
+        int statusCode = HttpStatus.CREATED.value();
+        String message = AppMessage.ACCOUNT_LOGIN_SUCCESS.getMessage();
+        return buildApiResponse(authService.login(loginRequest), statusCode, message);
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<AuthResponse> register(@RequestBody LoginRequest loginRequest) {
-        return ResponseEntity.ok(authService.login(loginRequest));
+    @PostMapping({"/refresh", "refresh-token"})
+    public ApiResponse<AuthResponse> refreshToken(@RequestBody RefreshTokenRequest refreshTokenRequest) {
+        int statusCode = HttpStatus.OK.value();
+        String message = AppMessage.REFRESH_TOKEN_SUCCESS.getMessage();
+        return buildApiResponse(authService.refreshToken(refreshTokenRequest), statusCode, message);
     }
 
-    @PostMapping("/refresh")
-    public ResponseEntity<AuthResponse> register(@RequestBody RefreshTokenRequest refreshTokenRequest) {
-        RefreshToken refreshToken = refreshTokenService.verifyRefreshToken(refreshTokenRequest.getRefreshToken());
-        String accessToken = jwtService.generateToken(refreshToken.getUser());
-
-        return ResponseEntity.ok(AuthResponse.builder()
-                .accessToken(accessToken)
-                .refreshToken(refreshToken.getRefreshToken())
-                .build());
+    @GetMapping("/my-info")
+    ApiResponse<UserResponse> getMyInfo() {
+        return ApiResponse.<UserResponse>builder()
+                .result(authService.getMyInfo())
+                .build();
     }
+
+    public <T> ApiResponse<T> buildApiResponse(T response, int status, String message) {
+        return ApiResponse.<T>builder()
+                .code(status)
+                .message(message)
+                .result(response)
+                .build();
+    }
+
 }

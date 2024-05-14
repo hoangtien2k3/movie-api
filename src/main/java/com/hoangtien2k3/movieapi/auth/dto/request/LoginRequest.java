@@ -1,4 +1,4 @@
-package com.hoangtien2k3.movieapi.auth.utils.request;
+package com.hoangtien2k3.movieapi.auth.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -21,11 +21,12 @@ public class RefreshTokenService {
         this.userRepository = userRepository;
     }
 
-    public RefreshToken createRefreshToken(String username) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + username));
+    public RefreshToken createRefreshToken(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
 
         RefreshToken refreshToken = user.getRefreshToken();
+
         if (refreshToken == null) {
             long refreshTokenValidity = 5 * 60 * 60 * 1000;
             refreshToken = RefreshToken.builder()

@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
@@ -40,20 +42,20 @@ public class User implements UserDetails {
     @Size(min = 5, message = "The password must have at least 5 characters")
     private String password;
 
+    @ElementCollection(targetClass = UserRole.class, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Set<UserRole> role;
+
     @OneToOne(mappedBy = "user")
     private RefreshToken refreshToken;
 
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
-
-    private boolean isEnabled = true;
-    private boolean isAccountNonExpired = true;
-    private boolean isAccountNonLocked = true;
-    private boolean isCredentialsNonExpired = true;
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return role.stream()
+                .map(userRole -> new SimpleGrantedAuthority(userRole.name()))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -68,21 +70,21 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return isAccountNonExpired;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return isAccountNonLocked;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return isCredentialsNonExpired;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return isEnabled;
+        return true;
     }
 }
