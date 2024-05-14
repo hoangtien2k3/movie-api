@@ -9,16 +9,13 @@ import com.hoangtien2k3.movieapi.auth.repositories.UserRepository;
 import com.hoangtien2k3.movieapi.auth.dto.request.LoginRequest;
 import com.hoangtien2k3.movieapi.auth.dto.request.RegisterRequest;
 import com.hoangtien2k3.movieapi.auth.dto.response.AuthResponse;
-import com.hoangtien2k3.movieapi.dto.ApiResponse;
 import com.hoangtien2k3.movieapi.exceptions.AppException;
 import com.hoangtien2k3.movieapi.exceptions.ErrorCode;
 import com.hoangtien2k3.movieapi.exceptions.payload.RefreshTokenException;
 import com.hoangtien2k3.movieapi.exceptions.payload.UserNotFoundException;
 import com.hoangtien2k3.movieapi.utils.AppMessage;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -74,7 +71,6 @@ public class AuthService {
                 userDetails, null, authorities);
 
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-
         var accessToken = jwtService.generateToken(user);
         var refreshToken = refreshTokenService.createRefreshToken(user.getEmail());
 
