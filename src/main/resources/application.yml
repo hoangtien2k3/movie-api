@@ -26,3 +26,17 @@ jwt:
   signerKey: "QpOD7PxEqUCWRB8BU6e+Hv29TQLUuG+0sxxSJZWAPGhrVVszWZU2hT5RhoQTvhgv"
   valid-duration: 3600 # in second
   refreshable-duration: 36000 # in seconds
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui/index.html
+    tryItOutEnabled: true
+    filter: true
+
+openapi:
+  service:
+    api-docs: movie-api
+    server: http://localhost:8080
+    title: Movie Api Service
+    description: Open Api Movie - Server
+    version: 1.0.0

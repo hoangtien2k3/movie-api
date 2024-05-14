@@ -29,6 +29,17 @@ public class SecurityConfiguration {
             "/api/v1/movie/all",
             "/api/v1/movie/allMoviePage",
             "/api/v1/movie/{movieId}",
+            "/v2/api-docs",
+            "/v3/api-docs",
+            "/v3/api-docs/**",
+            "/swagger-resources/**",
+            "/swagger-ui.html",
+            "/webjars/**",
+            "/swagger-resources/configuration/ui",
+            "/swagger-resources/configuration/security",
+            "/swagger-ui.html/**",
+            "/swagger-ui/**",
+            "/swagger-ui.html/**"
     };
 
     @Bean

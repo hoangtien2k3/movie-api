@@ -11,6 +11,9 @@ import com.hoangtien2k3.movieapi.dto.request.RegisterRequest;
 import com.hoangtien2k3.movieapi.dto.response.AuthResponse;
 import com.hoangtien2k3.movieapi.dto.ApiResponse;
 import com.hoangtien2k3.movieapi.utils.AppMessage;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,6 +31,10 @@ public class AuthController {
     private final RefreshTokenService refreshTokenService;
     private final JwtService jwtService;
 
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Created"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Bad request")
+    })
     @PostMapping({"/register", "/signup"})
     public ResponseEntity<ApiResponse<UserResponse>> register(@RequestBody @Valid RegisterRequest registerRequest) {
         int statusCode = HttpStatus.CREATED.value();
@@ -36,6 +43,10 @@ public class AuthController {
                 .body(buildApiResponse(authService.register(registerRequest), statusCode, message));
     }
 
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Created"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Bad request")
+    })
     @PostMapping({"/login", "/signin"})
     public ApiResponse<AuthResponse> register(@RequestBody LoginRequest loginRequest) {
         int statusCode = HttpStatus.CREATED.value();
@@ -57,12 +68,22 @@ public class AuthController {
                 .build();
     }
 
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "204", description = "No content"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Not found"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Bad request")
+    })
     @DeleteMapping("/{userId}")
     public ApiResponse<String> deleteUser(@PathVariable Integer userId) {
         authService.deleteUser(userId);
         return ApiResponse.<String>builder().result("User has been deleted").build();
     }
 
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "204", description = "No content"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Not found"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Bad request")
+    })
     @PutMapping("/{userId}")
     public ApiResponse<UserResponse> updateUser(@PathVariable Integer userId,
                                                 @RequestBody UserUpdateRequest request) {

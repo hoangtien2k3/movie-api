@@ -9,6 +9,8 @@ import com.hoangtien2k3.movieapi.exceptions.payload.EmptyFileException;
 import com.hoangtien2k3.movieapi.service.MovieService;
 import com.hoangtien2k3.movieapi.utils.AppConstants;
 import com.hoangtien2k3.movieapi.utils.AppMessage;
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,20 @@ public class MovieController {
 
     private final MovieService movieService;
 
+    @Operation(
+            description = "Post endpoint for add-movie",
+            summary = "This is a summary for management add-movie post endpoint",
+            responses = {
+                    @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                            description = "Success",
+                            responseCode = "200"
+                    ),
+                    @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                            description = "Unauthorized / Invalid token",
+                            responseCode = "403"
+                    )
+            }
+    )
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/add-movie")
     public ResponseEntity<ApiResponse<MovieDto>> addMovieHandler(@RequestPart MultipartFile file,
@@ -35,7 +51,7 @@ public class MovieController {
         }
         MovieDto dto = convertToMovieDto(movieDto);
 
-        int statusCode = HttpStatus.CREATED.value();
+        int statusCode = HttpStatus.OK.value();
         String message = AppMessage.MOVIE_CREATION_SUCCESS.getMessage();
         return ResponseEntity.status(statusCode)
                 .body(buildApiResponse(movieService.addMovie(dto, file), statusCode, message));

@@ -1,6 +1,7 @@
 package com.hoangtien2k3.movieapi.controller;
 
 import com.hoangtien2k3.movieapi.service.FileService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
