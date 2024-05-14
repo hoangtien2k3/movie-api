@@ -1,5 +1,6 @@
 package com.hoangtien2k3.movieapi.controller;
 
+import com.hoangtien2k3.movieapi.dto.request.UserUpdateRequest;
 import com.hoangtien2k3.movieapi.dto.response.UserResponse;
 import com.hoangtien2k3.movieapi.service.auth.AuthService;
 import com.hoangtien2k3.movieapi.service.auth.JwtService;
@@ -15,6 +16,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -48,9 +51,38 @@ public class AuthController {
     }
 
     @GetMapping("/my-info")
-    ApiResponse<UserResponse> getMyInfo() {
+    public ApiResponse<UserResponse> getMyInfo() {
         return ApiResponse.<UserResponse>builder()
                 .result(authService.getMyInfo())
+                .build();
+    }
+
+    @DeleteMapping("/{userId}")
+    public ApiResponse<String> deleteUser(@PathVariable Integer userId) {
+        authService.deleteUser(userId);
+        return ApiResponse.<String>builder().result("User has been deleted").build();
+    }
+
+    @PutMapping("/{userId}")
+    public ApiResponse<UserResponse> updateUser(@PathVariable Integer userId,
+                                                @RequestBody UserUpdateRequest request) {
+        return ApiResponse.<UserResponse>builder()
+                .result(authService.updateUser(userId, request))
+                .build();
+    }
+
+    @GetMapping
+    public ApiResponse<List<UserResponse>> getUsers() {
+
+        return ApiResponse.<List<UserResponse>>builder()
+                .result(authService.getUsers())
+                .build();
+    }
+
+    @GetMapping("/{userId}")
+    ApiResponse<UserResponse> getUser(@PathVariable("userId") Integer userId) {
+        return ApiResponse.<UserResponse>builder()
+                .result(authService.getUser(userId))
                 .build();
     }
 

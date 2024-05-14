@@ -11,10 +11,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
-        format_sql: true
+        format_sql: false
 
 project:
   poster: poster/
@@ -24,3 +24,5 @@ base:
 
 jwt:
   signerKey: "QpOD7PxEqUCWRB8BU6e+Hv29TQLUuG+0sxxSJZWAPGhrVVszWZU2hT5RhoQTvhgv"
+  valid-duration: 3600 # in second
+  refreshable-duration: 36000 # in seconds

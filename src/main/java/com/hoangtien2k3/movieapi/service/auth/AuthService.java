@@ -1,6 +1,7 @@
 package com.hoangtien2k3.movieapi.service.auth;
 
 import com.hoangtien2k3.movieapi.dto.request.RefreshTokenRequest;
+import com.hoangtien2k3.movieapi.dto.request.UserUpdateRequest;
 import com.hoangtien2k3.movieapi.dto.response.UserResponse;
 import com.hoangtien2k3.movieapi.entity.user.RefreshToken;
 import com.hoangtien2k3.movieapi.entity.user.User;
@@ -16,6 +17,8 @@ import com.hoangtien2k3.movieapi.exceptions.payload.UserNotFoundException;
 import com.hoangtien2k3.movieapi.utils.AppMessage;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -27,6 +30,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Slf4j
@@ -100,6 +104,36 @@ public class AuthService {
         User user = userRepository.findByEmail(name).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
 
         return userMapper.toUserResponse(user);
+    }
+
+    @PostAuthorize("returnObject.username == authentication.name")
+    public UserResponse updateUser(Integer userId, UserUpdateRequest request) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+
+        userMapper.updateUser(user, request);
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+
+        return userMapper.toUserResponse(userRepository.save(user));
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public void deleteUser(Integer userId) {
+        userRepository.deleteById(userId);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public List<UserResponse> getUsers() {
+        log.info("In method get Users");
+        return userRepository.findAll()
+                .stream()
+                .map(userMapper::toUserResponse).toList();
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN') or returnObject.username == authentication.name")
+    public UserResponse getUser(Integer id) {
+        return userMapper.toUserResponse(
+                userRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED)));
     }
 
 }
