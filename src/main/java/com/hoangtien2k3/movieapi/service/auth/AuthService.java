@@ -1,14 +1,14 @@
-package com.hoangtien2k3.movieapi.auth.service;
+package com.hoangtien2k3.movieapi.service.auth;
 
-import com.hoangtien2k3.movieapi.auth.dto.request.RefreshTokenRequest;
-import com.hoangtien2k3.movieapi.auth.dto.response.UserResponse;
-import com.hoangtien2k3.movieapi.auth.entities.RefreshToken;
-import com.hoangtien2k3.movieapi.auth.entities.User;
-import com.hoangtien2k3.movieapi.auth.mapper.UserMapper;
-import com.hoangtien2k3.movieapi.auth.repositories.UserRepository;
-import com.hoangtien2k3.movieapi.auth.dto.request.LoginRequest;
-import com.hoangtien2k3.movieapi.auth.dto.request.RegisterRequest;
-import com.hoangtien2k3.movieapi.auth.dto.response.AuthResponse;
+import com.hoangtien2k3.movieapi.dto.request.RefreshTokenRequest;
+import com.hoangtien2k3.movieapi.dto.response.UserResponse;
+import com.hoangtien2k3.movieapi.entity.user.RefreshToken;
+import com.hoangtien2k3.movieapi.entity.user.User;
+import com.hoangtien2k3.movieapi.mapper.UserMapper;
+import com.hoangtien2k3.movieapi.repository.UserRepository;
+import com.hoangtien2k3.movieapi.dto.request.LoginRequest;
+import com.hoangtien2k3.movieapi.dto.request.RegisterRequest;
+import com.hoangtien2k3.movieapi.dto.response.AuthResponse;
 import com.hoangtien2k3.movieapi.exceptions.AppException;
 import com.hoangtien2k3.movieapi.exceptions.ErrorCode;
 import com.hoangtien2k3.movieapi.exceptions.payload.RefreshTokenException;

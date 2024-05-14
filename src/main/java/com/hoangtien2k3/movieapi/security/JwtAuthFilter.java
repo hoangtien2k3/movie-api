@@ -1,6 +1,6 @@
-package com.hoangtien2k3.movieapi.auth.security;
+package com.hoangtien2k3.movieapi.security;
 
-import com.hoangtien2k3.movieapi.auth.service.JwtService;
+import com.hoangtien2k3.movieapi.service.auth.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

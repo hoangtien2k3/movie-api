@@ -1,11 +1,9 @@
-package com.hoangtien2k3.movieapi.auth.mapper;
+package com.hoangtien2k3.movieapi.mapper;
 
-import com.hoangtien2k3.movieapi.auth.dto.request.RegisterRequest;
-import com.hoangtien2k3.movieapi.auth.dto.response.UserResponse;
-import com.hoangtien2k3.movieapi.auth.entities.User;
+import com.hoangtien2k3.movieapi.dto.request.RegisterRequest;
+import com.hoangtien2k3.movieapi.dto.response.UserResponse;
+import com.hoangtien2k3.movieapi.entity.user.User;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {

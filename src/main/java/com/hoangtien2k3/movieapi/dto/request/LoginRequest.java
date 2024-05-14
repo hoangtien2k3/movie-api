@@ -1,4 +1,4 @@
-package com.hoangtien2k3.movieapi.auth.dto.response;
+package com.hoangtien2k3.movieapi.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AuthResponse {
-    private String accessToken;
-    private String refreshToken;
+public class LoginRequest {
+    private String email;
+    private String password;
 }

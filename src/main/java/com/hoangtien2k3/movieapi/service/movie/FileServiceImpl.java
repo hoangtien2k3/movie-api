@@ -1,4 +1,4 @@
-package com.hoangtien2k3.movieapi.service.impl;
+package com.hoangtien2k3.movieapi.service.movie;
 
 import com.hoangtien2k3.movieapi.service.FileService;
 import org.springframework.stereotype.Service;

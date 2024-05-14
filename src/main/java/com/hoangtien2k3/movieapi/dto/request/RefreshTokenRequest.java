@@ -1,4 +1,4 @@
-package com.hoangtien2k3.movieapi.auth.dto.request;
+package com.hoangtien2k3.movieapi.dto.request;
 
 import lombok.Data;
 

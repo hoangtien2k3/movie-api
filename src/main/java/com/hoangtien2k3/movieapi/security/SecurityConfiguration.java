@@ -1,4 +1,4 @@
-package com.hoangtien2k3.movieapi.auth.security;
+package com.hoangtien2k3.movieapi.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

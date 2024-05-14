@@ -1,4 +1,4 @@
-package com.hoangtien2k3.movieapi.auth.entities;
+package com.hoangtien2k3.movieapi.entity.user;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -10,7 +10,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 

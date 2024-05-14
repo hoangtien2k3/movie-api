@@ -1,6 +1,6 @@
-package com.hoangtien2k3.movieapi.auth.repositories;
+package com.hoangtien2k3.movieapi.repository;
 
-import com.hoangtien2k3.movieapi.auth.entities.RefreshToken;
+import com.hoangtien2k3.movieapi.entity.user.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
-package com.hoangtien2k3.movieapi.auth.dto.request;
+package com.hoangtien2k3.movieapi.dto.request;
 
-import com.hoangtien2k3.movieapi.auth.entities.UserRole;
+import com.hoangtien2k3.movieapi.entity.user.UserRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

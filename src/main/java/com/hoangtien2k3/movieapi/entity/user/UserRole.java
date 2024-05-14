@@ -1,4 +1,4 @@
-package com.hoangtien2k3.movieapi.auth.entities;
+package com.hoangtien2k3.movieapi.entity.user;
 
 import org.springframework.security.core.GrantedAuthority;
 

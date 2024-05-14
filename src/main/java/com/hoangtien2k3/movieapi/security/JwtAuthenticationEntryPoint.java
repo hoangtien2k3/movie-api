@@ -1,4 +1,4 @@
-package com.hoangtien2k3.movieapi.auth.security;
+package com.hoangtien2k3.movieapi.security;
 
 import java.io.IOException;
 

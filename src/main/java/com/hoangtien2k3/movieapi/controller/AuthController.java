@@ -1,13 +1,13 @@
 package com.hoangtien2k3.movieapi.controller;
 
-import com.hoangtien2k3.movieapi.auth.dto.response.UserResponse;
-import com.hoangtien2k3.movieapi.auth.service.AuthService;
-import com.hoangtien2k3.movieapi.auth.service.JwtService;
-import com.hoangtien2k3.movieapi.auth.service.RefreshTokenService;
-import com.hoangtien2k3.movieapi.auth.dto.request.LoginRequest;
-import com.hoangtien2k3.movieapi.auth.dto.request.RefreshTokenRequest;
-import com.hoangtien2k3.movieapi.auth.dto.request.RegisterRequest;
-import com.hoangtien2k3.movieapi.auth.dto.response.AuthResponse;
+import com.hoangtien2k3.movieapi.dto.response.UserResponse;
+import com.hoangtien2k3.movieapi.service.auth.AuthService;
+import com.hoangtien2k3.movieapi.service.auth.JwtService;
+import com.hoangtien2k3.movieapi.service.auth.RefreshTokenService;
+import com.hoangtien2k3.movieapi.dto.request.LoginRequest;
+import com.hoangtien2k3.movieapi.dto.request.RefreshTokenRequest;
+import com.hoangtien2k3.movieapi.dto.request.RegisterRequest;
+import com.hoangtien2k3.movieapi.dto.response.AuthResponse;
 import com.hoangtien2k3.movieapi.dto.ApiResponse;
 import com.hoangtien2k3.movieapi.utils.AppMessage;
 import jakarta.validation.Valid;

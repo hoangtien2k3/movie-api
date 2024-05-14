@@ -1,4 +1,4 @@
-package com.hoangtien2k3.movieapi.auth.entities;
+package com.hoangtien2k3.movieapi.entity.user;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

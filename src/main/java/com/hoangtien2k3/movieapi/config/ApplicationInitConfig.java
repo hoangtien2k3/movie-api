@@ -1,8 +1,8 @@
-package com.hoangtien2k3.movieapi.auth.config;
+package com.hoangtien2k3.movieapi.config;
 
-import com.hoangtien2k3.movieapi.auth.entities.User;
-import com.hoangtien2k3.movieapi.auth.entities.UserRole;
-import com.hoangtien2k3.movieapi.auth.repositories.UserRepository;
+import com.hoangtien2k3.movieapi.entity.user.User;
+import com.hoangtien2k3.movieapi.entity.user.UserRole;
+import com.hoangtien2k3.movieapi.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

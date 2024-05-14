@@ -1,9 +1,9 @@
-package com.hoangtien2k3.movieapi.auth.service;
+package com.hoangtien2k3.movieapi.service.auth;
 
-import com.hoangtien2k3.movieapi.auth.entities.RefreshToken;
-import com.hoangtien2k3.movieapi.auth.entities.User;
-import com.hoangtien2k3.movieapi.auth.repositories.RefreshTokenRepository;
-import com.hoangtien2k3.movieapi.auth.repositories.UserRepository;
+import com.hoangtien2k3.movieapi.entity.user.RefreshToken;
+import com.hoangtien2k3.movieapi.entity.user.User;
+import com.hoangtien2k3.movieapi.repository.RefreshTokenRepository;
+import com.hoangtien2k3.movieapi.repository.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 

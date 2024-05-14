@@ -1,6 +1,6 @@
-package com.hoangtien2k3.movieapi.auth.config;
+package com.hoangtien2k3.movieapi.config;
 
-import com.hoangtien2k3.movieapi.auth.repositories.UserRepository;
+import com.hoangtien2k3.movieapi.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

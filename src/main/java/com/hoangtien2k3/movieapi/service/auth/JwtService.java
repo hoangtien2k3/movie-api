@@ -1,4 +1,4 @@
-package com.hoangtien2k3.movieapi.auth.service;
+package com.hoangtien2k3.movieapi.service.auth;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

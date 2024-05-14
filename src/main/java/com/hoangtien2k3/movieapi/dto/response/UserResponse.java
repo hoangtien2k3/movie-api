@@ -1,6 +1,6 @@
-package com.hoangtien2k3.movieapi.auth.dto.response;
+package com.hoangtien2k3.movieapi.dto.response;
 
-import com.hoangtien2k3.movieapi.auth.entities.UserRole;
+import com.hoangtien2k3.movieapi.entity.user.UserRole;
 import lombok.*;
 
 import java.util.Set;
