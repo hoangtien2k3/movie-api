@@ -1,0 +1,1 @@
+# export mysql: mysqldump -u root -p movies > mysql/movie_data.sql;

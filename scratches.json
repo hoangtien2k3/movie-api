@@ -1,22 +1,22 @@
 [
   {
     "movieId": 1,
-    "title": "Avengers: Endgame",
-    "directory": "Joe and Anthony Brothers",
+    "title": "Film hoạt hình hay nhất mọi thời đại",
+    "directory": "Film hoạt hình - giải trí",
     "studio": "Marvel Studio",
     "movieCast": [
       "RDJ",
       "Chris Evans",
       "Scarlett Johansson"
     ],
-    "releaseYear": 2019,
+    "releaseYear": 2024,
     "poster": "default.png",
     "posterUrl": "url"
   },
   {
     "movieId": 2,
-    "title": "The Dark Knight",
-    "directory": "Christopher Nolan",
+    "title": "Film kungfu",
+    "directory": "Vua kungfu",
     "studio": "Warner Bros. Pictures",
     "movieCast": [
       "Christian Bale",
@@ -29,13 +29,13 @@
   },
   {
     "movieId": 3,
-    "title": "Inception",
-    "directory": "Christopher Nolan",
+    "title": "Những tàn khốc chiến tranh Việt Nam",
+    "directory": "Film đề tài lịch sử",
     "studio": "Warner Bros. Pictures",
     "movieCast": [
-      "Leonardo DiCaprio",
-      "Joseph Gordon-Levitt",
-      "Ellen Page"
+      "Lê Trọng Tấn",
+      "Davit Nguyễn",
+      "Dương Hồng Quân"
     ],
     "releaseYear": 2010,
     "poster": "default.png",
@@ -43,9 +43,9 @@
   },
   {
     "movieId": 4,
-    "title": "Interstellar",
-    "directory": "Christopher Nolan",
-    "studio": "Warner Bros. Pictures",
+    "title": "Film Vị Hoàng Đế Cuối Cùng",
+    "directory": "Bảo Đại - Triều Nhà Nguyễn",
+    "studio": "Huế - Triều Đại Cuối Cùng Thời Nguyễn",
     "movieCast": [
       "Matthew McConaughey",
       "Anne Hathaway",

@@ -2,6 +2,7 @@ package com.hoangtien2k3.movieapi.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -29,6 +30,7 @@ public class SecurityConfiguration {
             "/api/v1/movie/all",
             "/api/v1/movie/allMoviePage",
             "/api/v1/movie/{movieId}",
+            "/file/**",
             "/v2/api-docs",
             "/v3/api-docs",
             "/v3/api-docs/**",
